@@ -3,6 +3,7 @@ import "./App.css";
 import Calander from "./Pages/Home/Calander";
 import Completed from "./Pages/Home/Completed";
 import Todo from "./Pages/Home/Todo";
+import Footer from "./Pages/Shared/Footer";
 import Navbar from "./Pages/Shared/Navbar";
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <Route path="/todo" element={<Todo></Todo>}></Route>
         <Route path="/calendar" element={<Calander></Calander>}></Route>
       </Routes>
+      <Footer></Footer>
     </div>
   );
 }
