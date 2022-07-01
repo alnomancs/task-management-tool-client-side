@@ -3,9 +3,7 @@ import React from "react";
 const Footer = () => {
   return (
     <footer
-      className="footer footer-center p-10 bg-lime-50 text-black fixed
-             inset-x-0
-             bottom-0"
+      className="footer footer-center p-10 bg-lime-50 text-black"
     >
       <div>
         <p className="font-bold">
