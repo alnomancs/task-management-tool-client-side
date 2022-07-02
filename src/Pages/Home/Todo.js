@@ -12,7 +12,7 @@ const Todo = () => {
       status: "0",
     };
 
-    fetch(`http://localhost:5005/addTask`, {
+    fetch(`https://red-toonie-08010.herokuapp.com/addTask`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

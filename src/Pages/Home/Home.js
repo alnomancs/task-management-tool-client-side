@@ -4,17 +4,18 @@ import { toast } from "react-toastify";
 
 const Home = () => {
   const [tasks, setTasks] = useState([]);
+  const [checked, setChecked] = useState(false);
 
   useEffect(() => {
-    fetch("http://localhost:5005/tasks")
+    fetch("https://red-toonie-08010.herokuapp.com/tasks")
       .then((res) => res.json())
       .then((data) => {
         setTasks(data);
       });
-  }, []);
+  }, [checked]);
 
   // const { data, isLoading, refetch } = useQuery("users", () =>
-  //   fetch(`http://localhost:5005/tasks`, {
+  //   fetch(`https://red-toonie-08010.herokuapp.com/tasks`, {
   //     method: "GET",
   //   }).then((res) => {
   //     return res.json();
@@ -34,13 +35,13 @@ const Home = () => {
     item[0].task = event.target.value;
     console.log(item);
     console.log(items);
-    items = item[0];
+    items[{}] = item[0];
     setTasks(items);
   };
 
   const handleCheckBox = (event) => {
     const _id = event.target.value;
-    const url = `http://localhost:5005/task?_id=${_id}&status=${1}`;
+    const url = `https://red-toonie-08010.herokuapp.com/task?_id=${_id}&status=${1}`;
     fetch(url, {
       method: "POST",
       headers: {
@@ -50,6 +51,7 @@ const Home = () => {
       .then((res) => res.json())
       .then((data) => {
         toast("Task finised");
+        setChecked(true);
       });
   };
 

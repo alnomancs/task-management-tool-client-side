@@ -9,7 +9,7 @@ const Completed = () => {
     isLoading,
     refetch,
   } = useQuery("users", () =>
-    fetch(`http://localhost:5005/tasksComplete`, {
+    fetch(`https://red-toonie-08010.herokuapp.com/tasksComplete`, {
       method: "GET",
     }).then((res) => {
       return res.json();
