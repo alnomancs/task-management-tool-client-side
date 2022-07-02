@@ -3,10 +3,9 @@ import { toast } from "react-toastify";
 
 const AllTaskRow = ({
   taskProps,
-
-  setDeleteTask,
   handleCheckBox,
   handleChangeTask,
+  handleEditTask,
 }) => {
   const { _id, task } = taskProps;
   // const [task, setTask] = useState([]);
@@ -27,7 +26,9 @@ const AllTaskRow = ({
       </td>
 
       <td>
-        <label className="btn btn-error btn-xs">Edit</label>
+        <label className="btn btn-error btn-xs" onClick={handleEditTask}>
+          Edit
+        </label>
       </td>
     </tr>
   );

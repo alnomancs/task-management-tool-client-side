@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useQuery } from "react-query";
 import AllTaskRow from "./AllTaskRow";
-import Loading from "../Shared/Loading";
 import { toast } from "react-toastify";
 
 const Home = () => {
@@ -11,12 +9,9 @@ const Home = () => {
     fetch("http://localhost:5005/tasks")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setTasks(data);
       });
   }, []);
-
-  const [deleteTask, setDeleteTask] = useState(null);
 
   // const { data, isLoading, refetch } = useQuery("users", () =>
   //   fetch(`http://localhost:5005/tasks`, {
@@ -28,38 +23,23 @@ const Home = () => {
   //if (isLoading) return <Loading></Loading>;
   //refetch();
 
+  const handleEditTask = (event) => {};
+
   const handleChangeTask = (event) => {
-    console.log(event);
-    console.log(event.target.value);
-    console.log(event);
-
-    // const {editabletask} = tasks.filter((task) => task._id === event._id);
-
-    // console.log("editable ", editabletask);
-
     let items = [...tasks];
-    console.log(items);
 
     let item = {
       ...items.filter((task) => task.task === event.target.defaultValue),
     };
-
-    console.log(item);
-
     item[0].task = event.target.value;
     console.log(item);
-    items[0] = item[0];
     console.log(items);
+    items = item[0];
     setTasks(items);
   };
 
-  console.log(tasks);
-
   const handleCheckBox = (event) => {
-    console.log("checkbox event", event.target.value);
-    setDeleteTask(event.target.value);
     const _id = event.target.value;
-
     const url = `http://localhost:5005/task?_id=${_id}&status=${1}`;
     fetch(url, {
       method: "POST",
@@ -69,9 +49,7 @@ const Home = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         toast("Task finised");
-        //refetch();
       });
   };
 
@@ -89,10 +67,9 @@ const Home = () => {
                     <AllTaskRow
                       key={task?._id}
                       taskProps={task}
-                      //refetch={refetch}
-                      setDeleteTask={setDeleteTask}
                       handleCheckBox={handleCheckBox}
                       handleChangeTask={handleChangeTask}
+                      handleEditTask={handleEditTask}
                     ></AllTaskRow>
                   ))}
                 </tbody>
