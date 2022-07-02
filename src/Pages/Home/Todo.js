@@ -9,7 +9,7 @@ const Todo = () => {
     console.log(task);
     const taskDetail = {
       task: task,
-      status: 0,
+      status: "0",
     };
 
     fetch(`http://localhost:5005/addTask`, {
