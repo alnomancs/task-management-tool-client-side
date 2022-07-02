@@ -24,7 +24,25 @@ const Home = () => {
   //if (isLoading) return <Loading></Loading>;
   //refetch();
 
-  const handleEditTask = (event) => {};
+  const handleEditTask = (event) => {
+    const _id = event._id;
+    const task = event.task;
+
+    console.log(_id);
+    console.log(task);
+    const url = `https://red-toonie-08010.herokuapp.com/task/edit?_id=${_id}&task=${task}`;
+    console.log(url);
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        toast("Task details change");
+      });
+  };
 
   const handleChangeTask = (event) => {
     let items = [...tasks];

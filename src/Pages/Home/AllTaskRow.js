@@ -26,7 +26,10 @@ const AllTaskRow = ({
       </td>
 
       <td>
-        <label className="btn btn-error btn-xs" onClick={handleEditTask}>
+        <label
+          className="btn btn-error btn-xs"
+          onClick={() => handleEditTask(taskProps)}
+        >
           Edit
         </label>
       </td>
