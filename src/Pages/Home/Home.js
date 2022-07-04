@@ -58,6 +58,7 @@ const Home = () => {
   };
 
   const handleCheckBox = (event) => {
+    setChecked(false);
     const _id = event.target.value;
     const url = `https://red-toonie-08010.herokuapp.com/task?_id=${_id}&status=${1}`;
     fetch(url, {
